@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box">
+      <div class="content">
+        <div class="metadata">Hello</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const getElement = (element, querySelectorAll) => {
+    if (element.id === querySelectorAll  || element.className === querySelectorAll) {
+      return element;
+    }
+    for (let i = 0; i < element.children.length; i++) {
+      const childELem = element.children[i];
+
+      const matchElem = getElement(childELem, querySelectorAll);
+      if (matchElem) {
+        return matchElem;
+      }
+    }
+  }
+
+  const element = getElement(document.body,"metadata");
+  console.log(element);
+  
+</script>

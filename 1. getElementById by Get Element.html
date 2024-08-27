@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Element by ID</title>
+</head>
+<body>
+    <div id="box">
+        <div id="content">
+            <div id="metadata">Hello</div>
+        </div>
+    </div>
+
+    <script>
+        
+        const getElement = (element, id) => {
+            if (element.id === id) {
+                return element;
+            }
+            
+            
+            for (let i = 0; i < element.children.length; i++) {
+                const childELem = element.children[i];
+                
+                // console.log(element.children.length);
+
+                const matchElem = getElement(childELem, id);
+
+                if (matchElem) {
+                    return matchElem;
+                }
+            }
+        }
+        
+        const element = getElement(document.body, 'metadata');
+        console.log("Match :",element);
+        
+    </script>
+</body>
+</html>
